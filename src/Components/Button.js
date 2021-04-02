@@ -7,7 +7,9 @@ class Button extends Component {
     }
     render() {
         return (
-            <div className={`button ${this.isOpearator(this.props.children) ? " " : "operator"}`} >
+            <div className={`button ${this.isOpearator(this.props.children) ? " " : "operator"}`}  
+                onClick={() => this.props.handClick(this.props.children)}
+            >
               {this.props.children}
             </div>
         )

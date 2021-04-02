@@ -1,17 +1,37 @@
 import React, { Component } from 'react'
-import { add, sub, mult, divi} from '../Components/Calculator'
+import Button from '../Components/Button';
+import './ParentComponent.css'
+// import { add, sub, mult, divi} from '../Components/Calculator'
  class ParentComponent extends Component {
     render() {
         return (
-            <div>
-                sum of two numbers are {add(5,6)}
-                <br/>
-                subtraction of two numbers are {sub(8,4)}
-                <br/>
-                multiplication of two numbers are {mult(5,6)}
-                <br/>
-                Division of two numbers are {divi(10, 2)}
-                <br/>
+            <div className="app" >
+                <div className="calcWrapper">
+                    <div className="row">
+                        <Button>7</Button>
+                        <Button>8</Button>
+                        <Button>9</Button>
+                        <Button>/</Button>
+                    </div>
+                    <div className="row">
+                        <Button>4</Button>
+                        <Button>5</Button>
+                        <Button>6</Button>
+                        <Button>*</Button>
+                    </div>
+                    <div className="row">
+                        <Button>1</Button>
+                        <Button>2</Button>
+                        <Button>3</Button>
+                        <Button>+</Button>
+                    </div>
+                    <div className="row">
+                        <Button>.</Button>
+                        <Button>0</Button>
+                        <Button>=</Button>
+                        <Button>-</Button>
+                    </div>
+                </div>
             </div>
         )
     }

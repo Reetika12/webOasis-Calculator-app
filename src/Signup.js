@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
 import './Signin.css'
-
+import LogIn from './SignIn'
 class Signup extends Component {
     constructor(props)
     {
@@ -11,7 +11,8 @@ class Signup extends Component {
             fullName:'',
             userName:'',
             email:'',
-            password:''
+            password:'',
+            page:'main'
         }
 
     }
@@ -35,6 +36,12 @@ class Signup extends Component {
             password: event.target.value
         })
     }
+    changePage = () =>{
+        console.log("page change")
+        this.setState({
+            page: "signIn"
+        })
+    }
     onSubmitForm = (event) =>{
         event.preventDefault()
         const registered = {
@@ -53,7 +60,8 @@ class Signup extends Component {
     }
     render() {
         return (
-        <form className="parentstyle" onSubmit={this.onSubmitForm}>
+        <div>
+       {this.state.page==="main" && <form className="parentstyle" onSubmit={this.onSubmitForm}>
             <h3>Sign Up</h3>
             <div className="form-group">
                 <label className="labelStyle">Full name</label>
@@ -89,11 +97,14 @@ class Signup extends Component {
             </div>
             <div className="commonSignup">
                 <input type="submit" className="signUpbutton" value="Register" />
-                <p className="forgot-password text-right">
-                    Already registered <a href="#">sign in?</a>
-                </p>
+                    <p className="forgot-password text-right">
+                        Already registered ?
+                    </p>
+                    <button className="signUpbutton" onClick={this.changePage}>sign in</button>
             </div>
-        </form>
+           </form>}
+          {this.state.page === "signIn" && <LogIn />}
+        </div>
         )}
         
     

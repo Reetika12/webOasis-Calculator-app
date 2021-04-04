@@ -6,18 +6,7 @@ import './Signin.css'
     render() {
         return (
             <form className="parentstyle">
-                <h3>Sign Up</h3>
-
-                <div className="form-group">
-                    <label className="labelStyle">First name</label>
-                    <input type="text" className="form-control" placeholder="First name" />
-                </div>
-
-                <div className="form-group">
-                    <label className="labelStyle">Last name</label>
-                    <input type="text" className="form-control" placeholder="Last name" />
-                </div>
-
+                <h3>Login</h3>
                 <div className="form-group">
                     <label className="labelStyle">Email  </label>
                     <input type="email" className="form-control" placeholder="Enter email" />
@@ -28,10 +17,7 @@ import './Signin.css'
                     <input type="password" className="form-control" placeholder="Enter password" />
                 </div>
                 <div className="commonSignup">
-                    <button type="submit" className="btn btn-primary btn-block signUpbutton">Sign Up</button>
-                    <p className="forgot-password text-right">
-                        Already registered <a href="#">sign in?</a>
-                    </p>
+                    <button type="submit" className="btn btn-primary btn-block signUpbutton">Sign in</button>
                 </div>
             </form>
         );

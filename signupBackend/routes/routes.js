@@ -31,7 +31,7 @@ router.post('/signup', (request, response)=>{
             return;
         }
         response.status(201).send('Data insert successful')
-        client.end();
+        // client.end();
     });
 
 })

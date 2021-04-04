@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
-// import './Button.css'
+import './Signin.css'
+
 class Signup extends Component {
     constructor(props)
     {
@@ -52,38 +53,50 @@ class Signup extends Component {
     }
     render() {
         return (
-            <div>
-                <div className="container">
-                    <div className="form-div">
-                        <form onSubmit={this.onSubmitForm}>
-                            <input type="text"
-                            placeholder="Full Name"
-                            onChange={this.changefullname}
-                            value={this.state.fullName}
-                            className="form-control form-group"/>
-                            <input type="text"
-                                placeholder="User Name"
-                                onChange={this.changeUsername}
-                                value={this.state.userName}
-                                className="form-control form-group" />
-                            <input type="text"
-                                placeholder="Email"
-                                onChange={this.changeEmail}
-                                value={this.state.email}
-                                className="form-control form-group" />
-                            <input type="text"
-                                placeholder="Password"
-                                onChange={this.changePassword}
-                                value={this.state.password}
-                                className="form-control form-group" />
-                            <input type="submit" className="btn btn-danger btn-block" value="submit"/>
-                        </form>
-                    </div>
-                </div>
-           
+        <form className="parentstyle" onSubmit={this.onSubmitForm}>
+            <h3>Sign Up</h3>
+            <div className="form-group">
+                <label className="labelStyle">Full name</label>
+                <input type="text"
+                placeholder="Full Name"
+                onChange={this.changefullname}
+                value={this.state.fullName}
+                className="form-control form-group"/>
             </div>
-        )
-    }
+            <div className="form-group">
+                <label className="labelStyle">User name</label>
+                <input type="text"
+                    placeholder="User Name"
+                    onChange={this.changeUsername}
+                    value={this.state.userName}
+                    className="form-control form-group" />
+            </div>
+            <div className="form-group">
+                <label className="labelStyle">Email  </label>
+                <input type="text"
+                    placeholder="Email"
+                    onChange={this.changeEmail}
+                    value={this.state.email}
+                    className="form-control form-group" />
+            </div>
+            <div className="form-group">
+                <label className="labelStyle">Password</label>
+            <input type="text"
+                placeholder="Password"
+                onChange={this.changePassword}
+                value={this.state.password}
+                className="form-control form-group" />
+            </div>
+            <div className="commonSignup">
+                <input type="submit" className="signUpbutton" value="Register" />
+                <p className="forgot-password text-right">
+                    Already registered <a href="#">sign in?</a>
+                </p>
+            </div>
+        </form>
+        )}
+        
+    
 }
 
 export default Signup

@@ -1,0 +1,36 @@
+
+.parentstyle{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 400px;
+    background: aliceblue;
+    flex:1;
+    margin-top: 100px;
+    padding-right: 40px;
+}
+.form-group{
+    display: flex;
+    align-items: baseline;
+}
+.labelStyle{
+    flex:1;
+}
+.form-control
+{
+    width: 80%;
+}
+.signUpbutton{
+    width: 40%;
+    align-self: flex-end;
+    background: blue;
+    color: #fff;
+    border-radius: 10px;
+    padding: 5px 5px;
+    border: none;
+} 
+.commonSignup{
+    display: flex;
+    flex-direction: column;
+    margin-right: 200px;
+    flex:1;
+}

@@ -7,11 +7,19 @@ const client = new Client({
     password: 'postgres',
     port: 5432,
 })
-client.connect()
+client.connect((error)=>{
+    if(error)
+    {
+        console.log(error)
+    }
+    else{
+        console.log("database connected")
+    }
+})
 const query = `
-CREATE TABLE userDetails (
-    firstName varchar,
-    lastName varchar,
+CREATE TABLE signuptable (
+    fullName varchar,
+    userName varchar,
     email varchar,
     password varchar
 );

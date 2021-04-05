@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import './Signin.css'
 import axios from 'axios'
 import ToastMessage from './Components/ToastMessage'
+import ParentComponent from './Containers/ParentComponent'
 
 
  class Login extends Component {
@@ -11,7 +12,8 @@ import ToastMessage from './Components/ToastMessage'
          this.state={
              email:'',
              password:'',
-             toastMessage: ""
+             toastMessage: "",
+             page:'signin'
          }
      }
     onEmailChange = (event)=>{
@@ -52,33 +54,37 @@ import ToastMessage from './Components/ToastMessage'
              this.setState({
                  email: '',
                  password: '',
-                 toastMessage: response.data.message
+                 toastMessage: response.data.message,
+                 page:'Parentcomponent'
              })
          )
      }
     render() {
         return (
-            <form className="parentstyle">
-                <h3>Login</h3>
-                <div className="form-group">
-                    <label className="labelStyle">Email  </label>
-                    <input type="email" className="form-control" value={this.state.email} onChange={this.onEmailChange} placeholder="Enter email" />
-                </div>
+            <div>
+                {this.state.page === "signin" && <form className="parentstyle">
+                    <h3>Login</h3>
+                    <div className="form-group">
+                        <label className="labelStyle">Email  </label>
+                        <input type="email" className="form-control" value={this.state.email} onChange={this.onEmailChange} placeholder="Enter email" />
+                    </div>
 
-                <div className="form-group">
-                    <label className="labelStyle">Password</label>
-                    <input type="password" className="form-control" value={this.state.password} onChange={this.onPasswordChange} placeholder="Enter password" />
-                </div>
-                <div className="commonSignup">
-                    <button type="submit" onClick={this.signInEvent}className="btn btn-primary btn-block signUpbutton">Sign in</button>
-                </div>
+                    <div className="form-group">
+                        <label className="labelStyle">Password</label>
+                        <input type="password" className="form-control" value={this.state.password} onChange={this.onPasswordChange} placeholder="Enter password" />
+                    </div>
+                    <div className="commonSignup">
+                        <button type="submit" onClick={this.signInEvent}className="btn btn-primary btn-block signUpbutton">Sign in</button>
+                    </div>
+                </form>}
                 {this.state.toastMessage && <ToastMessage
                     horizontal="right"
                     message={this.state.toastMessage}
                     open={true}
                     handleClose={() => this.setToastMessage("")}
                 />}
-            </form>
+                {this.state.page === "Parentcomponent" && <ParentComponent />}
+            </div>
         );
     }
 }

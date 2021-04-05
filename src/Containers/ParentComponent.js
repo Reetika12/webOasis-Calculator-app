@@ -127,7 +127,7 @@ import { add, sub, mult, divi} from '../Components/Calculator'
                         <Button handClick={this.evaluate}>=</Button>
                         <Button handClick={this.subtract}>-</Button>
                     </div>
-                    <div>
+                    <div className="row">
                         <ClearButton handleClick={this.handleClear}>
                             Clear
                         </ClearButton>

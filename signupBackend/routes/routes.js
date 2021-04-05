@@ -19,7 +19,6 @@ client.connect((error) => {
 })
 
 router.post('/signup', (request, response)=>{
-    console.log("req", request)
     const { fullname, username, email, password} = request.body
         const query = `
     INSERT INTO signuptable (fullname, username, email, password)
@@ -31,12 +30,11 @@ router.post('/signup', (request, response)=>{
             return;
         }
         response.status(201).send({"message":"Registered successfully","status":"success"})
-        // client.end();
+        client.end();
     });
 
 })
 router.post('/signin', (request, response) => {
-    console.log("request", request)
     const query = `select * from signuptable where email=$1`
     client.query(query, [request.body.email], (err, res) => {
         if (err) {
@@ -57,7 +55,7 @@ router.post('/signin', (request, response) => {
                 response.status(200).send({"message":"loged in succesfully", "status":"success"})
             }
         }
-        // client.end();
+        client.end();
     });
 })
 

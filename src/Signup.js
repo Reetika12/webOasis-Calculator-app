@@ -3,6 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css"
 import axios from 'axios'
 import './Signin.css'
 import LogIn from './SignIn'
+import ToastMessage from './Components/ToastMessage'
+
 class Signup extends Component {
     constructor(props)
     {
@@ -12,32 +14,41 @@ class Signup extends Component {
             userName:'',
             email:'',
             password:'',
-            page:'main'
+            page:'main',
+            toastMessage: ""
         }
 
     }
+
+    setToastMessage = (message) => {
+        this.setState({ toastMessage: message })
+    }
+
     changefullname =(event)=>{
         this.setState({
             fullName:event.target.value
         })
     }
+
     changeUsername = (event) => {
         this.setState({
             userName: event.target.value
         })
     }
+
     changeEmail = (event) => {
         this.setState({
             email: event.target.value
         })
     }
+
     changePassword = (event) => {
         this.setState({
             password: event.target.value
         })
     }
+
     changePage = () =>{
-        console.log("page change")
         this.setState({
             page: "signIn"
         })
@@ -50,13 +61,41 @@ class Signup extends Component {
             email:this.state.email,
             password: this.state.password
         }
-        axios.post('http://localhost:3001/app/signup', registered).then(response => console.log(response.data))
-        this.setState({
-            fullName:'',
-            userName:'',
-            email:'',
-            password:''
-        })
+        if (!this.state.fullName) {
+            this.setState({
+                toastMessage: 'Full Name is required field',
+            });
+            return;
+        }
+        if (!this.state.userName) {
+            this.setState({
+                toastMessage: 'User Name is required field',
+            });
+            return;
+        }
+        if (!this.state.email) {
+            this.setState({
+                toastMessage: 'Email is required field',
+            });
+            return;
+        }
+        if (!this.state.password) {
+            this.setState({
+                toastMessage: 'Password is required field',
+            });
+            return;
+        }
+      
+        axios.post('http://localhost:3001/app/signup', registered).then(response =>
+            this.setState({
+                fullName: '',
+                userName: '',
+                email: '',
+                password: '',
+                toastMessage: response.data.message
+            })
+        )
+       
     }
     render() {
         return (
@@ -104,10 +143,15 @@ class Signup extends Component {
             </div>
            </form>}
           {this.state.page === "signIn" && <LogIn />}
+            {this.state.toastMessage && <ToastMessage
+                horizontal="right"
+                message={this.state.toastMessage}
+                open={true}
+                handleClose={() => this.setToastMessage("")}
+            />}
         </div>
         )}
         
-    
 }
 
 export default Signup

@@ -30,7 +30,7 @@ router.post('/signup', (request, response)=>{
             return;
         }
         response.status(201).send({"message":"Registered successfully","status":"success"})
-        client.end();
+        // client.end();
     });
 
 })
@@ -55,7 +55,7 @@ router.post('/signin', (request, response) => {
                 response.status(200).send({"message":"loged in succesfully", "status":"success"})
             }
         }
-        client.end();
+        // client.end();
     });
 })
 
